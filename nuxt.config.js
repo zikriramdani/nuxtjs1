@@ -73,14 +73,21 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/proxy'
   ],
 
   // const env
   env: env[process.env.NODE_ENV],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': { target: env[process.env.NODE_ENV], pathRewrite: {'^/api/': ''}, changeOrigin: true }
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
