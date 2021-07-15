@@ -1,15 +1,15 @@
-import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
-import colors from 'vuetify/es5/util/colors'
-import pkg from './package'
+import VuetifyLoaderPlugin from "vuetify-loader/lib/plugin";
+import colors from "vuetify/es5/util/colors";
+import pkg from "./package";
 
 const env = {
-  development : {
-      baseUrl : 'https://test.incenplus.com/',
+  development: {
+    baseUrl: "https://test.incenplus.com/"
   },
-  production : {
-      baseUrl : 'https://test.incenplus.com/',
+  production: {
+    baseUrl: "https://test.incenplus.com/"
   }
-}
+};
 // API DOCS:
 // https://test.incenplus.com/docs/
 // username: icp password: rahasia
@@ -17,37 +17,36 @@ const env = {
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - nuxtjs1',
+    titleTemplate: "%s - nuxtjs1",
     title: pkg.name,
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description },
-      { name: 'format-detection', content: 'telephone=no' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { hid: "description", name: "description", content: pkg.description },
+      { name: "format-detection", content: "telephone=no" }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
-        rel: 'stylesheet',
+        rel: "stylesheet",
         href:
-        'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Material+Icons'
+          "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Material+Icons"
       }
     ]
   },
 
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#0A3961' },
+   ** Customize the progress-bar color
+   */
+  loading: { color: "#0A3961" },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
+  css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/axios',
-    '~/plugins/another-module'
+    "~/plugins/axios"
+    // '~/plugins/another-module'
   ],
 
   // enviroments
@@ -61,20 +60,20 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    "@nuxtjs/eslint-module",
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    "@nuxtjs/vuetify"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // Router
-    '@nuxtjs/router',
+    "@nuxtjs/router",
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
+    "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
-    '@nuxtjs/proxy'
+    "@nuxtjs/pwa",
+    "@nuxtjs/proxy"
   ],
 
   // const env
@@ -86,19 +85,23 @@ export default {
   },
 
   proxy: {
-    '/api/': { target: env[process.env.NODE_ENV], pathRewrite: {'^/api/': ''}, changeOrigin: true }
+    "/api/": {
+      target: env[process.env.NODE_ENV],
+      pathRewrite: { "^/api/": "" },
+      changeOrigin: true
+    }
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: "en"
     }
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: ["~/assets/variables.scss"],
     theme: {
       dark: true,
       themes: {
@@ -117,20 +120,27 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    transpile: ['vuetify/lib'],
+    transpile: ["vuetify/lib"],
     plugins: [new VuetifyLoaderPlugin()],
-    loaders: {
-        stylus: {
-            import: ['~assets/style/variables.styl']
-        }
-    },
     analyze: {
-        analyzerMode: 'static'
+      analyzerMode: "static"
     },
     /*
-    ** You can extend webpack config here
-    */
+     ** You can extend webpack config here
+     */
     extend(config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: "pre",
+          test: /\.(js|vue)$/,
+          loader: "eslint-loader",
+          exclude: /(node_modules)/,
+          options: {
+            fix: true
+          }
+        });
+      }
     }
   }
-}
+};

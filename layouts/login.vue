@@ -1,15 +1,15 @@
 <template>
-    <div class="height-100">
-        <v-app >
-            <v-main>
-                <nuxt/> 
-            </v-main>
-        </v-app>
-    </div>
+  <div class="height-100">
+    <v-app>
+      <v-main>
+        <nuxt />
+      </v-main>
+    </v-app>
+  </div>
 </template>
 
 <script>
-    export default {
-        middleware: 'unauthenticated'
-    };
+export default {
+	middleware: 'unauthenticated'
+}
 </script>
