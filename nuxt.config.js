@@ -1,5 +1,17 @@
 import colors from 'vuetify/es5/util/colors'
 
+const env = {
+  development : {
+      baseUrl : 'https://test.incenplus.com/',
+  },
+  production : {
+      baseUrl : 'https://test.incenplus.com/',
+  }
+}
+// API DOCS:
+// https://test.incenplus.com/docs/
+// username: icp password: rahasia
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -22,13 +34,13 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~plugins/axios.js',
+    // '~plugins/axios',
   ],
 
   // enviroments
-  env: {
-    baseUrl: process.env.BASE_URL
-  },
+  // env: {
+  //   baseUrl: process.env.BASE_URL
+  // },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -48,6 +60,11 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
   ],
+
+  /*
+  ** Cons ENV
+  */
+  env: env[process.env.NODE_ENV],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
