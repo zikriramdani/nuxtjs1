@@ -1,53 +1,56 @@
 <template>
-  <div>
-    <div class="text-center">
-      <v-dialog
-        v-model="dialog"
-        width="500"
-      >
-        <template #activator="{ on, attrs }">
-          <v-btn
-            color="accent lighten-2"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            Tambah books
-          </v-btn>
-        </template>
-
-        <v-card>
-          <v-card-title class="text-h5 grey lighten-2">
-            Privacy Policy
-          </v-card-title>
-
-          <v-card-text>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </v-card-text>
-
-          <v-divider />
-
-          <v-card-actions>
-            <v-spacer />
+  <v-row justify="center" align="center">
+    <v-col cols="12">
+      <div>
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template #activator="{ on, attrs }">
             <v-btn
-              color="primary"
-              text
-              @click="dialog = false"
+              color="accent lighten-2"
+              dark
+              v-bind="attrs"
+              class="mb-3"
+              v-on="on"
             >
-              I accept
+              Tambah books
             </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </div>
+          </template>
 
-    <v-data-table
-      :headers="headers"
-      :items="desserts"
-      :items-per-page="5"
-      class="elevation-1"
-    />
-  </div>
+          <v-card>
+            <v-card-title class="text-h5 grey lighten-2">
+              Privacy Policy
+            </v-card-title>
+
+            <v-card-text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </v-card-text>
+
+            <v-divider />
+
+            <v-card-actions>
+              <v-spacer />
+              <v-btn
+                color="primary"
+                text
+                @click="dialog = false"
+              >
+                I accept
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </div>
+
+      <v-data-table
+        :headers="headers"
+        :items="desserts"
+        :items-per-page="5"
+        class="elevation-1"
+      />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
