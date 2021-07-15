@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 import index from '~/pages/index'
 import Welcome from '~/pages/welcome/index'
-import Book from '~/pages/book/index'
+import Books from '~/pages/books/index'
 
 Vue.use(Router)
 
@@ -21,8 +21,8 @@ export function createRouter () {
 			},
 
 			{
-				path: '/book',
-				component: Book
+				path: '/books',
+				component: Books
 			}
 		]
 	})

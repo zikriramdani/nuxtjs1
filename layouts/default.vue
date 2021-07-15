@@ -82,8 +82,8 @@ export default {
 				},
 				{
 					icon: 'mdi-chart-bubble',
-					title: 'Book',
-					to: '/book'
+					title: 'Books',
+					to: '/books'
 				}
 			],
 			miniVariant: false,
