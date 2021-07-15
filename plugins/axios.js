@@ -16,7 +16,7 @@ export default function ({ $axios, redirect, store }) {
         {
             console.warn(response.data.error.token);
             store.dispatch('user/logout');
-            redirect('/login');
+            redirect('/');
         }
     });
 

@@ -1,4 +1,6 @@
+import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import colors from 'vuetify/es5/util/colors'
+import pkg from './package'
 
 const env = {
   development : {
@@ -16,17 +18,27 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - nuxtjs1',
-    title: 'nuxtjs1',
+    title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: pkg.description },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+        'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Material+Icons'
+      }
     ]
   },
+
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: { color: '#0A3961' },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -34,7 +46,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    // '~plugins/axios',
+    '~/plugins/axios',
+    '~/plugins/another-module'
   ],
 
   // enviroments
@@ -55,15 +68,15 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    // Router
+    '@nuxtjs/router',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
   ],
 
-  /*
-  ** Cons ENV
-  */
+  // const env
   env: env[process.env.NODE_ENV],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -97,5 +110,20 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vuetify/lib'],
+    plugins: [new VuetifyLoaderPlugin()],
+    loaders: {
+        stylus: {
+            import: ['~assets/style/variables.styl']
+        }
+    },
+    analyze: {
+        analyzerMode: 'static'
+    },
+    /*
+    ** You can extend webpack config here
+    */
+    extend(config, ctx) {
+    }
   }
 }
