@@ -110,7 +110,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Nuxt JS'
+      title: 'Vuetify + Nuxt.js template'
     }
   }
 }
