@@ -4,7 +4,7 @@ import pkg from "./package";
 
 const env = {
   development: {
-    baseUrl: "https://test.incenplus.com/"
+    baseUrl: "https://test.incenplus.com/",
   },
   production: {
     baseUrl: "https://test.incenplus.com/"
@@ -78,8 +78,9 @@ export default {
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
-    "@nuxtjs/pwa",
-    "@nuxtjs/proxy"
+    // "@nuxtjs/pwa",
+    // "@nuxtjs/proxy",
+    '@nuxt/http'
   ],
 
   // const env
@@ -87,16 +88,16 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    // proxy: true
   },
 
-  // proxy: {
-  //   "/api/": {
-  //     target: env[process.env.NODE_ENV],
-  //     pathRewrite: { "^/api/": "" },
-  //     changeOrigin: true
-  //   }
-  // },
+  http: {
+    proxy: true // Can be also an object with default options
+  },
+
+  proxy: {
+    // Simple proxy
+    '/api/': 'https://test.incenplus.com',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   // pwa: {
