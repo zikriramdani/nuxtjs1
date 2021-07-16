@@ -20,7 +20,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: "%s - nuxtjs1",
+    titleTemplate: "%s",
     title: pkg.name,
     htmlAttrs: {
       lang: 'en'
