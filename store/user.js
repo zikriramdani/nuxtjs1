@@ -1,5 +1,5 @@
 export const state = () => ({
-	token: '', // localStorage.getItem('token'),
+	token: localStorage.getItem('token') || '',
 	auth: null
 })
 
@@ -22,22 +22,20 @@ export const actions = {
 	// Proses Login
 	login (context, payload) {
 		return new Promise((resolve, reject) => {
-			this.$axios
-				.post('/users/login', payload)
-				.then((result) => {
-					console.log('asd', result)
-					// if(result.data.status)
-					// {
-					// 	context.commit('setToken', result.data.data.jwt.token);
-					// 	context.commit('setAuth', result.data.data.user);
+			this.$axios.post('/users/login', payload).then((result) => {
+				console.log('asd', result)
+				// if(result.data.status)
+				// {
+				// 	context.commit('setToken', result.data.data.jwt.token);
+				// 	context.commit('setAuth', result.data.data.user);
 
-					// 	resolve(result.data);
-					// }
-					// else
-					// {
-					// 	reject(result.data);
-					// }
-				})
+				// 	resolve(result.data);
+				// }
+				// else
+				// {
+				// 	reject(result.data);
+				// }
+			})
 				.catch((error) => {
 					reject(error)
 				})
@@ -57,9 +55,10 @@ export const actions = {
 		this.$axios
 			.get('/users/me')
 			.then((result) => {
-				if (result.data.status) {
-					context.commit('setAuth', result.data.data.profile)
-				}
+				console.log('fetchAuth', result)
+				// if (result.data.status) {
+				// 	context.commit('setAuth', result.data.data.profile)
+				// }
 			})
 			.catch((error) => {
 				console.log(error)

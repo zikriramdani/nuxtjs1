@@ -57,21 +57,22 @@
               </template>
 
               <template v-else>
-                <!-- <v-btn
-                                    block
-                                    large
-                                    class="d-button--blue border-radius-2"
-                                    @click="submit">
-                                    Login
-                                </v-btn> -->
                 <v-btn
+                  block
+                  large
+                  class="d-button--blue border-radius-2"
+                  @click="submit"
+                >
+                  Login
+                </v-btn>
+                <!-- <v-btn
                   block
                   large
                   class="d-button--blue border-radius-2"
                   href="/welcome"
                 >
                   Login
-                </v-btn>
+                </v-btn> -->
               </template>
             </v-card-actions>
           </v-card-text>
@@ -129,17 +130,17 @@ export default {
 
 			this.$store.dispatch('user/login', this.form).then(
 				(response) => {
-					if (response.status) {
-						this.$router.push('/welcome')
-					}
+					console.log('index', response)
+					// if (response.status) {
+					// 	this.$router.push('/welcome')
+					// }
 				},
 				(error) => {
 					console.warn(error)
-
-					// if(error.error.message){
-					//     this.errorMessage           = error.error.message;
-					//     this.failUsernameOrPassword = true;
-					// }
+					if (error) {
+					    this.errorMessage = 'error 412' // error.error.message;
+					    this.failUsernameOrPassword = true
+					}
 
 					this.loadingLogin = false
 				}

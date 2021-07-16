@@ -17,6 +17,7 @@
     "@nuxtjs/router": "^1.6.1",
     "axios": "^0.21.1",
     "core-js": "^3.15.1",
+    "local-cors-proxy": "^1.1.0",
     "nuxt": "^2.15.7",
     "vuetify": "^2.5.5"
   },
