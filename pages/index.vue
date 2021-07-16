@@ -125,7 +125,7 @@ export default {
 
 			if (!this.valid) {
 				return
-			}
+			};
 
 			this.loadingLogin = true
 
@@ -139,8 +139,8 @@ export default {
 				(error) => {
 					console.warn(error)
 					if (error) {
-					    this.errorMessage = 'error 412' // error.error.message;
-					    this.failUsernameOrPassword = true
+						this.errorMessage = 'error 412' // error.error.message;
+						this.failUsernameOrPassword = true
 					}
 
 					this.loadingLogin = false

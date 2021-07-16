@@ -60,7 +60,7 @@ export const actions = {
 				// }
 			})
 			.catch((error) => {
-				console.log(error)
+				console.log('fetchAuth err', error)
 			})
 	}
 }
@@ -68,8 +68,8 @@ export const actions = {
 export const getters = {
 	getAuthUsername: (state) => {
 		return state.auth ? state.auth.username : ''
-	},
-	getAuthName: (state) => {
-		return state.auth ? state.auth.name : ''
 	}
+	// getAuthName: (state) => {
+	// 	return state.auth ? state.auth.name : ''
+	// }
 }
