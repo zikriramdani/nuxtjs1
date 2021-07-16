@@ -35,10 +35,9 @@ export const actions = {
 				// {
 				// 	reject(result.data);
 				// }
+			}).catch((error) => {
+				reject(error)
 			})
-				.catch((error) => {
-					reject(error)
-				})
 		})
 	},
 

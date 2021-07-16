@@ -11,6 +11,7 @@
           <v-card-text>
             <v-form ref="form" v-model="valid">
               <v-text-field
+                id="username"
                 ref="username"
                 v-model="form.username"
                 :label="form.username ? 'Username/ID' : ''"
