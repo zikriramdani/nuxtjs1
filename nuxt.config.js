@@ -79,7 +79,7 @@ export default {
     "@nuxtjs/axios",
     // https://go.nuxtjs.dev/pwa
     // "@nuxtjs/pwa",
-    // "@nuxtjs/proxy",
+    "@nuxtjs/proxy",
     '@nuxt/http'
   ],
 
@@ -88,15 +88,12 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-  },
-
-  http: {
     proxy: true // Can be also an object with default options
   },
 
   proxy: {
     // Simple proxy
-    '/api/': 'https://test.incenplus.com',
+    '/api/': { target: 'https://test.incenplus.com', pathRewrite: {'^/api/': ''}, changeOrigin: true }
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
